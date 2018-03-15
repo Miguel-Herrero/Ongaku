@@ -114,6 +114,8 @@ export default {
       console.error(error)
     }
 
+    console.log(this.recordings)
+
     if (this.recordings && this.recordings.length) return
 
     // return axios.get('http://musicbrainz.org/ws/2/artist/0a428818-2623-406e-8453-600dce442e78?inc=recording-rels&fmt=json')
