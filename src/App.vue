@@ -116,37 +116,37 @@ export default {
 
     if (this.recordings && this.recordings.length) return
 
-    return axios.get('http://musicbrainz.org/ws/2/artist/0a428818-2623-406e-8453-600dce442e78?inc=recording-rels&fmt=json')
-      .then(response => {
-        this.name = response.data.name
-        this.recordings = response.data.relations.map(recording => {
-          return {
-            attributes: recording.attributes,
-            type: recording.type,
-            begin: recording.begin,
-            end: recording.end,
-            title: recording.recording.title,
-            id: recording.recording.id
-          }
-        }).sort(function (a, b){
-          // Turn your strings into dates, and then subtract them
-          // to get a value that is either negative, positive, or zero.
-          return new Date(b.begin) - new Date(a.begin);
-        })
+    // return axios.get('http://musicbrainz.org/ws/2/artist/0a428818-2623-406e-8453-600dce442e78?inc=recording-rels&fmt=json')
+    //   .then(response => {
+    //     this.name = response.data.name
+    //     this.recordings = response.data.relations.map(recording => {
+    //       return {
+    //         attributes: recording.attributes,
+    //         type: recording.type,
+    //         begin: recording.begin,
+    //         end: recording.end,
+    //         title: recording.recording.title,
+    //         id: recording.recording.id
+    //       }
+    //     }).sort(function (a, b){
+    //       // Turn your strings into dates, and then subtract them
+    //       // to get a value that is either negative, positive, or zero.
+    //       return new Date(b.begin) - new Date(a.begin);
+    //     })
 
-        this.reverse()
+    //     this.reverse()
 
-        var i = 0;
-        this.interval = setInterval(() => {
-          this.fetchRecording(this.recordings[i].id, i, this.recordings)
-          i++;
-          // if(i === 50) clearInterval(this.interval);
-          if(i === this.recordings.length) clearInterval(this.interval);
-        }, 1500);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    //     var i = 0;
+    //     this.interval = setInterval(() => {
+    //       this.fetchRecording(this.recordings[i].id, i, this.recordings)
+    //       i++;
+    //       // if(i === 50) clearInterval(this.interval);
+    //       if(i === this.recordings.length) clearInterval(this.interval);
+    //     }, 1500);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   },
 
   destroyed () {
