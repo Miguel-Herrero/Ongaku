@@ -109,7 +109,7 @@ export default {
 
   created () {
     try {
-      // this.recordings = nathan
+      this.recordings = nathan
     } catch (error) {
       console.error(error)
     }
