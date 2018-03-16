@@ -22,7 +22,7 @@
               <img
                 v-if="recording.spotifyUrl"
                 src="./assets/spotify-icon.png"
-                width="20em">
+                width="25px">
             </a>
           </td>
           <td><a :href="'https://musicbrainz.org/recording/'+ recording.id" target="_blank">{{ (recording.work && recording.work.title) || `----- NO WORK TITLE ${recording.title}` }}</a></td>
