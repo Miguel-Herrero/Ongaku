@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.JS 2 - Advanced Datatable Component</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700'>
+    <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/andrewcourtice/vuetiful/46294dcb0852e2f13324f186908aa7e62251f7aa/dist/components/app.style.css'>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/introjs.min.css'>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src='data/recordings.js'></script>
+    <script src='data/listened.js'></script>
+</head>
+
+<body>
+    <div id="datatables" class="container">
+        <h1>Nathan Milstein discography</h1>
+
+        <div>
+            <div class="grid-row" layout="row top-stretch">
+                <div class="grid-cell">
+                    <datatable id="data-table-main" :source="customers.rows" :striped="customers.striped" :editable="customers.editable" :line-numbers="customers.lineNumbers">
+                        <datatable-column v-for="column in customers.columns" :key="column.id" :id="column.id" :label="column.label" :width="column.width" :sortable="column.sortable"
+                            :groupable="column.groupable" :formatter="column.formatter">
+                        </datatable-column>
+                        <template slot="composer" scope="cell">
+                            <a :href="cell.row.composerHref" target="_blank">{{ cell.row.composer }}</a>
+                        </template>
+                        <template slot="work" scope="cell">
+                            <a :href="cell.row.workHref" target="_blank">{{ cell.row.work }}</a>
+                        </template>
+                        <template slot="recordingDate" scope="cell">
+                            <a :href="cell.row.recordingHref" target="_blank">{{ cell.row.recordingDate || '?' }}</a>
+                        </template>
+                        <template slot="listened" scope="cell">
+                            <a :href="cell.row.spotify" target="_blank">
+                                <img src="https://miguel-herrero.github.io/ongaku/dist/spotify-icon.png?cc41fdea0e54c4fa3a12ac6d152eba1d" height="15px">
+                            </a>
+                            <span> {{cell.row.listened ? '✔' : '' }} </span>
+                        </template>
+                    </datatable>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src='https://unpkg.com/vue@2.2.6/dist/vue.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.27.1/date_fns.min.js'></script>
+    <script src='https://cdn.rawgit.com/andrewcourtice/vuetiful/4c555c8c768cd27fea16d5370cd926763d78158a/dist/components/components.bundle.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/intro.min.js'></script>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
