@@ -118,6 +118,10 @@ new Vue({
             
 
             customers.rows[index].listened = !customers.rows[index].listened
+        },
+
+        isYoutube: function(url) {
+            return url && (url.indexOf('youtube') > 0)
         }
     },
     
