@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <title>Nathan Milstein recordings</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> -->
 
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700'>
     <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/andrewcourtice/vuetiful/46294dcb0852e2f13324f186908aa7e62251f7aa/dist/components/app.style.css'>
-    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/introjs.min.css'>
+    <!-- <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/introjs.min.css'> -->
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -38,7 +38,7 @@
                             <a :href="cell.row.recordingHref" target="_blank">{{ cell.row.recordingDate || '?' }}</a>
                         </template>
                         <template slot="listened" scope="cell">
-                            <a :href="cell.row.spotify" target="_blank">
+                            <a v-if="cell.row.spotify" :href="cell.row.spotify" target="_blank">
                                 <img v-if="isYoutube(cell.row.spotify)" src="images/youtube-icon.png" height="15px">
                                 <img v-else src="images/spotify-icon.png" height="15px">
                             </a>
@@ -50,10 +50,10 @@
         </div>
     </div>
 
-    <script src='https://unpkg.com/vue@2.2.6/dist/vue.js'></script>
+    <script src='https://unpkg.com/vue@2.5.16/dist/vue.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.27.1/date_fns.min.js'></script>
     <script src='https://cdn.rawgit.com/andrewcourtice/vuetiful/4c555c8c768cd27fea16d5370cd926763d78158a/dist/components/components.bundle.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/intro.min.js'></script>
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/intro.min.js'></script> -->
 
     <script src="js/index.js"></script>
 </body>

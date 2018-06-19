@@ -12,6 +12,7 @@ const PARTS = 'parts'
 
 const artistId = '0a428818-2623-406e-8453-600dce442e78'
 let maxRecordingsToFetch = 0 // Set to 0 to fetch all recordings
+const rateLimitInMilliseconds = 2000
 const recordings = {}
 const works = {}
 const recordingsToDelete = []
@@ -156,6 +157,6 @@ return axios.get(`http://musicbrainz.org/ws/2/artist/${artistId}?inc=recording-r
       fetchRecording(Object.keys(recordings)[i], i, maxRecordingsToFetch)
       i++;
       if(i === maxRecordingsToFetch) clearInterval(interval);
-    }, 1500);
+    }, rateLimitInMilliseconds);
   })
   .catch(console.error)
